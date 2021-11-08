@@ -1,0 +1,472 @@
+{
+	"info": {
+		"_postman_id": "9d684de0-d6cc-41e8-9345-98fc25265290",
+		"name": "synbiohub",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Visual/Download synbiohub generated",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"complete_sbol\": \"http://localhost:7777/user/Julia/blah/blah_collection/1/6c5e3fcea1ec7806f87496aca73381974961ff73/share/sbol\",\r\n    \"shallow_sbol\": \"http://localhost:7777/user/Julia/blah/blah_collection/1/6c5e3fcea1ec7806f87496aca73381974961ff73/share/sbolnr\",\r\n    \"genbank\": \"http://localhost:7777/user/Julia/blah/blah_collection/1/6c5e3fcea1ec7806f87496aca73381974961ff73/share/gb\",\r\n    \"top_level\": \"http://localhost:7777/user/Julia/blah/blah_collection/1\",\r\n    \"size\": 4,\r\n    \"type\": \"Collection\",\r\n    \"instanceUrl\": \"http://localhost:7777/\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/run",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"run"
+					]
+				},
+				"description": "took body directly from test synbiohub"
+			},
+			"response": []
+		},
+		{
+			"name": "Visual/Download run",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"instanceUrl\": \"https://dev.synbiohub.org/\",\n\t\"complete_sbol\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1/sbol\",\n\t\"genbank\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1/gb\",\n\t\"top_level\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1\",\n\t\"size\": 7,\n\t\"type\": \"Sequence\",\n\t\"shallow_sbol\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1/sbolnr\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/run",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"run"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Visual/Download evaluate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"type\": \"Component\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/evaluate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"evaluate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "submit eval test",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"manifest\": {\"files\":[\r\n  {\"url\": \"file_url0\", \"filename\": \"file_name0.xls\", \"type\": \"application/vnd.ms-excel\"},\r\n  {\"url\": \"file_url1\", \"filename\": \"file_name1.dna\", \"type\": \"application/xml\"},\r\n  {\"url\": \"file_url2\", \"filename\": \"file_name2.xml\", \"type\": \"application/xml\"},\r\n  {\"url\": \"file_url3\", \"filename\": \"file_name3.xml\", \"type\": \"application/xml\"},\r\n  {\"url\": \"file_url4\", \"filename\": \"file_name4.xml\", \"type\": \"application/xml\"},\r\n  {\"url\": \"file_url5\", \"filename\": \"file_name5.xml\", \"type\": \"application/xml\"},\r\n  {\"url\": \"file_url6\", \"filename\": \"file_name6.xml\", \"type\": \"application/xml\"}]}}"
+				},
+				"url": {
+					"raw": "https://excel2sbol.synbiohub.org/evaluate",
+					"protocol": "https",
+					"host": [
+						"excel2sbol",
+						"synbiohub",
+						"org"
+					],
+					"path": [
+						"evaluate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "submit run",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"manifest\": {\"files\":[{\"url\": \"https://subtest.synbiohub.org/download/pichia_toolkit_KWK_v002.xlsx\", \r\n                \"filename\": \"PRO-GROW.xlsx\", \r\n                \"type\": \"application/vnd.ms-excel\"}]},\r\n                \"instanceUrl\": \"test.org\"}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/run",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"run"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Curation evaluate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"instanceUrl\": \"https://dev.synbiohub.org/\",\n    \"submit_link\": \"http://localhost:5000/form_output\",\n\t\"complete_sbol\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1/sbol\",\n\t\"genbank\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1/gb\",\n\t\"top_level\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1\",\n\t\"size\": \"7\",\n\t\"type\": \"Component\",\n\t\"shallow_sbol\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1/sbolnr\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/evaluate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"evaluate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Curation Run",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"instanceUrl\": \"https://dev.synbiohub.org/\",\n    \"submit_link\": \"http://localhost:5000/form_output\",\n\t\"complete_sbol\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1/sbol\",\n\t\"genbank\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1/gb\",\n\t\"top_level\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1\",\n\t\"size\": \"7\",\n\t\"type\": \"Sequence\",\n\t\"shallow_sbol\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1/sbolnr\",\n    \"eval_parameters\": {\n            \"variable 1\": [\"default text\"],\n            \"variable 2\": [\"variable 2_0\"],\n            \"variable 3\": [\"variable 3_0\", \"variable 3_1\"],\n            \"variable 4\": [\"\"],\n            \"variable 6\": [\"#ffffff\"],\n            \"variable 7\": [\"2001-11-11\"],\n            \"variable 8\": [\"2001-11-11\"],\n            \"variable 9\": [\"test@gmail.com\"],\n            \"variable 10\": [\"\"],\n            \"variable 11\": [\"2020-07\"],\n            \"variable 12\": [\"7.89\"],\n            \"variable 13\": [\"50\"],\n            \"variable 14\": [\"888-88-888\"],\n            \"variable 15\": [\"16:30\"],\n            \"variable 16\": [\"http://www.awesome.com\"],\n            \"variable 17\": [\"2011-W20\"]\n        }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/run",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"run"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Curation Save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"instanceUrl\": \"https://dev.synbiohub.org/\",\n    \"submit_link\": \"http://localhost:5000/form_output\",\n\t\"complete_sbol\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1/sbol\",\n\t\"genbank\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1/gb\",\n\t\"top_level\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1\",\n\t\"size\": \"7\",\n\t\"type\": \"Sequence\",\n\t\"shallow_sbol\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1/sbolnr\",\n    \"eval_parameters\": {\n            \"variable 1\": [\"default text\"],\n            \"variable 2\": [\"variable 2_0\"],\n            \"variable 3\": [\"variable 3_0\", \"variable 3_1\"],\n            \"variable 4\": [\"\"],\n            \"variable 6\": [\"#ffffff\"],\n            \"variable 7\": [\"2001-11-11\"],\n            \"variable 8\": [\"2001-11-11\"],\n            \"variable 9\": [\"test@gmail.com\"],\n            \"variable 10\": [\"\"],\n            \"variable 11\": [\"2020-07\"],\n            \"variable 12\": [\"7.89\"],\n            \"variable 13\": [\"50\"],\n            \"variable 14\": [\"888-88-888\"],\n            \"variable 15\": [\"16:30\"],\n            \"variable 16\": [\"http://www.awesome.com\"],\n            \"variable 17\": [\"2011-W20\"]\n        },\n    \"run_parameters\": {\n            \"variable 1\": [\"default text\"],\n            \"variable 2\": [\"variable 2_0\"],\n            \"variable 3\": [\"variable 3_0\", \"variable 3_1\"],\n            \"variable 4\": [\"\"],\n            \"variable 6\": [\"#ffffff\"],\n            \"variable 7\": [\"2001-11-11\"],\n            \"variable 8\": [\"2001-11-11\"],\n            \"variable 9\": [\"test@gmail.com\"],\n            \"variable 10\": [\"\"],\n            \"variable 11\": [\"2020-07\"],\n            \"variable 12\": [\"7.89\"],\n            \"variable 13\": [\"50\"],\n            \"variable 14\": [\"888-88-888\"],\n            \"variable 15\": [\"16:30\"],\n            \"variable 16\": [\"http://www.awesome.com\"],\n            \"variable 17\": [\"2011-W20\"]\n        }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Parameters",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"instanceUrl\": \"https://dev.synbiohub.org/\",\r\n    \"submit_link\": \"http://localhost:5000/form_output\",\r\n    \"sparql_link\": \"https://synbiohub.org/sparql\",\r\n    \"es_link\": \"https://synbiohub.org/elasticsearch\"\r\n\t\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/parameters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"parameters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Run",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"instanceUrl\": \"https://dev.synbiohub.org/\",\n    \"sparql_link\": \"https://synbiohub.org/sparql\",\n    \"es_link\": \"https://synbiohub.org/elasticsearch\",\n    \"search_parameters\": {\n            \"variable 1\": [\"default text\"],\n            \"variable 2\": [\"variable 2_0\"],\n            \"variable 3\": [\"variable 3_0\", \"variable 3_1\"],\n            \"variable 4\": [\"\"],\n            \"variable 6\": [\"#ffffff\"],\n            \"variable 7\": [\"2001-11-11\"],\n            \"variable 8\": [\"2001-11-11\"],\n            \"variable 9\": [\"test@gmail.com\"],\n            \"variable 10\": [\"\"],\n            \"variable 11\": [\"2020-07\"],\n            \"variable 12\": [\"7.89\"],\n            \"variable 13\": [\"50\"],\n            \"variable 14\": [\"888-88-888\"],\n            \"variable 15\": [\"16:30\"],\n            \"variable 16\": [\"http://www.awesome.com\"],\n            \"variable 17\": [\"2011-W20\"]\n        }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/run",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"run"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Curation Run Synbict",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"instanceUrl\": \"https://dev.synbiohub.org/\",\n    \"submit_link\": \"http://localhost:5000/form_output\",\n\t\"complete_sbol\": \"https://subtest.synbiohub.org/download/test.xml\",\n\t\"genbank\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1/gb\",\n\t\"top_level\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1\",\n\t\"size\": \"7\",\n\t\"type\": \"Sequence\",\n\t\"shallow_sbol\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1/sbolnr\",\n    \"eval_parameters\": {\n        \"Libraries for Curation\": [\"MoClo_Yeast_Toolkit_Dueber_Lab_collection\", \"Natural_and_Synthetic_Terminators_Voigt_Lab_collection\", \"Pichia_MoClo_Toolkit_Lu_Lab_collection\"],\n        \"Minimum Annotation Length\": [\"40\"]\n        }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/run",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"run"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Curation Save Synbict",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"instanceUrl\": \"https://dev.synbiohub.org/\",\n    \"submit_link\": \"http://localhost:5000/form_output\",\n\t\"complete_sbol\": \"https://subtest.synbiohub.org/download/test.xml\",\n\t\"genbank\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1/gb\",\n\t\"top_level\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1\",\n\t\"size\": \"7\",\n\t\"type\": \"Sequence\",\n\t\"shallow_sbol\": \"https://synbiohub.org/public/igem/BBa_E0040_sequence/1/sbolnr\",\n    \"eval_parameters\": {\n        \"Libraries for Curation\": [\"MoClo_Yeast_Toolkit_Dueber_Lab_collection\", \"Natural_and_Synthetic_Terminators_Voigt_Lab_collection\", \"Pichia_MoClo_Toolkit_Lu_Lab_collection\"],\n        \"Minimum Annotation Length\": [\"40\"]\n        },\n    \"run_parameters\": {\n        \"Annotations Added\": [\n            {\"ID\": \"AmpR terminator\", \"end\": 150,\n            \"feature_id\": \"https://synbioks.org/public/MoClo_Yeast_Toolkit_Dueber_Lab/AmpR_u32_terminator/1\",\n            \"role\": \"terminator\", \"start\": 20, \"target_id\": \"https://synbiohub.org/Test_Part/1\"}\n            ]\n        }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Column Status",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Column Index",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"uri_list\": [\"https://synbiohub.org/public/igem/BBa_E0040/1\", \"https://synbiohub.org/public/igem/BBa_E0032/1\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/index",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"index"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Column View Index",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/view_index",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"view_index"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Column Incremental Update",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"uri_dict\": {\"https://synbiohub.org/public/igem/BBa_E0040/1\":{\"uri\":\"https://synbiohub.org/public/igem/BBa_E0040/1\", \"top_level_url\":\"https://synbiohub.org/public/igem/BBa_E0040/1\", \"action\":\"UPDATE\"}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/incremental_update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"incremental_update"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
